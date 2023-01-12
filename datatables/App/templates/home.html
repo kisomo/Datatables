@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+<!-- Navbar Content -->
+{% block navbar-content %}
+{% endblock navbar-content %}
+
+<!-- Page Content -->
+{% block content %}
+<div class="container">
+    <br><br><br>
+     <!-- Input Search Outside-->
+     <div class="d-flex" style="margin-right:25px;">
+        <div class="input-group input-group-sm">
+            <a class="btn btn-success btn-sm" style="width: 40px;" data-bs-toggle="modal" data-bs-target="#addemployeeModal">
+                <i class="fas fa-plus"></i>
+            </a>
+            <input class="form-control" type="search" id="search" placeholder="Live Search...", aria-label="Search">
+            <a href="{% url 'home' %}" style="width: 40px;" class="btn btn-secondary btn-sm">
+                <i class="fas fa-sync-alt"></i>
+            </a>
+        </div>
+    </div>
+    
+    <table class="table table-ordered" id="example" style="text-align:center;">
+        <thead class="table-success">
+            <tr>
+                <th style="width:3%">ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Occupation</th>
+                <th>Salary</th>
+                <th>Gender</th>
+                <th>Registered</th>
+                <th class="action-color">Edit</th>
+                <th>Delete</th>
+
+            </tr>
+        </thead>
+        <!-- <tbody> -->
+            {% for Employee in Employees %}
+            <tr>
+               <td> {{Employee.id}} </td>
+               <td> {{Employee.name}} </td>
+               <td> {{Employee.email}} </td>
+               <td> {{Employee.occupation}} </td>
+               <td> {{Employee.salary}} </td>
+               <td> {{Employee.gender}} </td>
+               <td> {{Employee.created_at | date:'m/d/Y (H:i)'}} </td>
+               <td> 
+                    <a class="btn btn-success text-center" title="Edit Employee" data-bs-toggle="modal" data-bs-target="#editModal{{employee.pk}}">
+                         <i class="fas fa-pen"></i>
+                    </a>
+               </td>
+               <td>
+                    <a class="btn btn-secondary text-center" title="Delete Employee" data-bs-toggle="modal" data-bs-target="#deleteModal{{employee.pk}}">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+               </td>
+            </tr>
+            {% include 'edit_employee.html' %}
+            <!-- Delete Confirmation -->
+            <div class="modal fade" id="deleteModal{{employee.pk}}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="deleteModalLabel"><i class="fas fa-trash-alt">&nbsp;&nbsp; Delete Employee</i></h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center text-danger"><i class="far fa-times-circle fa-5x mb-4 mt-2"></i>
+                            <div class="text-center text-danger">
+                                <span> DO YOU WANT TO DELETE THIS EMPLOYEE?</span>
+                                <div class="text-dark mt-3 mb-2">Employee:<strong>{{employee.name}}</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                        <a href="/delete_employee/{{employee.pk}}" class="btn btn-danger btn-sm">Delete</a>
+                    </div>
+                </div>
+                </div>
+            </div> 
+            {% endfor %}
+        <!-- </tbody> -->
+        <!-- JSON (Response from backend) instead of the table body-->
+    </table>
+
+</div> <!-- End container-->
+{% for message in messages %}
+    {% if message.tags == 'success' %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        var m = "{{ message }}";
+        swal("perfect !",m,"success")
+    </script>
+    {% endif %}
+{% endfor %}
+{% endblock content %}
+
+

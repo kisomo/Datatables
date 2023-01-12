@@ -1,0 +1,129 @@
+
+/* ===============================================
+START CONFIGURATION 
+==================================================*/
+html, 
+body {
+    height:100%;
+    margin:0;
+    max-width:100%;
+}
+
+/* ===============================================
+FOOTER
+==================================================*/
+
+.wrapper{
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+
+#footer, 
+.push{
+   height: 50px;
+}
+
+
+/* ===============================================
+CUSTOM PAGINATION
+==================================================*/
+.page-item.active .page-link{
+    columns:#fff;
+    background-color: #6c757d;
+    border:1px solid #6c757d;
+}
+
+.pagination > li >a {
+   background-color: #fff;
+   color: #6c757d;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > span > a:focus,
+.pagination > span >a:hover {
+    color:#111;
+    background-color: #d3d3d3;
+    box-shadow:none;
+}
+
+
+/* ===============================================
+DATATABLES
+==================================================*/
+/* Pagination */
+.dataTables_paginate{
+    margin-top: 10px !important;
+}
+
+/*Input Search*/
+.dataTables_filter{
+    margin-bottom: 10px !important;
+    display:none;
+}
+.dataTables_length{
+    float:right !important;
+    margin-top: 10px !important;
+}
+.dt-buttons {
+    margin-bottom: 10px !important;
+}
+/*Thead dataTable*/
+.sorting_disabled{
+    color:transparent !important;
+}
+
+/*Not datatables, it's a complement */
+thead input {
+    width:100%;
+    text-align:center;
+}
+.action-color{
+    color: transparent;
+}
+th:nth-child(8), th:nth-child(9){
+    border: none;
+}
+.side-label {
+    width:45px;
+}
+
+.swal-modal{
+    background-color: rgba(0,0,0,0.651);
+    color:#fff;
+}
+
+.swa-tile{
+    color:#fff;
+    font-size: 20px;
+}
+
+.swa-text{
+    color:#fff;
+    font-size: 15px;
+}
+
+/*Buttons*/
+.swa-button{
+    padding: 7px 19px;
+    border-radius: 5px;
+    background-color: #198754;
+    font-size: 12px;
+    border:1px solid #198754
+}
+
+.swa-button:not([disabled]):hover{
+    background: transparent;
+    color:#fff;
+    border:1px solid #198754;
+}
+
+/*Icons*/
+.swa-icon--success_hide-corners{
+    background: none !important;
+}
+
+.swal-icon--success:before,
+.swal-icon--success:after{
+    background: none !important;
+}

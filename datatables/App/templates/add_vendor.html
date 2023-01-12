@@ -1,0 +1,48 @@
+        <!-- Modal -->
+        <div class="modal fade" {% block modal-id %}id="addvendorModal"{% endblock modal-id %} tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5" id="addModalLabel">
+                    {% block modal-title %}<i class="fas fa-plus"></i>&nbsp;&nbsp; Add Vendor {% endblock modal-title %}
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="POST" {% block action %} action="/add_vendor" {% endblock action %} autocomplete="off">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                       <!-- ============ Block Id (Root) ============-->
+                       {% block value-id %}{% endblock value-id %}
+                       <div class="input-group mb-3">
+                         <span class="btn order-secondary bg-light side-label"><i class="fas fa-user-alt"></i></span>
+                         <input type="text" class="form-control" name="name" maxlength="40" placeholder="Full Name" required {% block value-name %}{% endblock value-name %}>
+                       </div>
+    
+                       <div class="input-group mb-3">
+                        <span class="btn order-secondary bg-light side-label"><i class="fas fa-envelope"></i></span>
+                        <input type="email" class="form-control" name="email" maxlength="40" placeholder="Email" required {% block value-email %}{% endblock value-email %}>
+                      </div>
+    
+                      <div class="input-group mb-3">
+                        <span class="btn order-secondary bg-light side-label"><i class="fas fa-user-cog"></i></span>
+                        <input type="text" class="form-control" name="industry" maxlength="40" placeholder="Industry" required {% block value-industry %}{% endblock value-industry %} >
+                      </div>
+    
+                      <div class="mt-4" style="width:100%;">
+                        <button type="submit" class="btn btn-secondary mb-3">
+                            {% block btn-action %}<i class="fas fa-plus"></i>&nbsp;&nbsp;Add Vendor {% endblock btn-action %}
+                        </button>
+                        <button type="reset" class="btn btn-outline-dark mb-3 ms-2" style="width:50px;" title="Reset">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                        <a href="{% url 'vendors' %}" type="button" class="btn btn-outline-dark mb-3 ms-2" style="width:50px;" title="close">
+                            <i class="fas fa-times"></i>
+                        </a>
+                      </div>
+    
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+    

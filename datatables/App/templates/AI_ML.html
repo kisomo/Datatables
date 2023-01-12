@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="ai_ml">
+    <br><br><br>
+    <!-- Input Search Outside-->
+   <div class="d-flex" style="margin-right:25px;">
+       <div class="input-group input-group-sm">
+           <a class="btn btn-success btn-sm" style="width: 40px;" data-bs-toggle="modal" data-bs-target="#addaimlModal">
+               <i class="fas fa-plus"></i>
+           </a>
+           <input class="form-control" type="search" id="search" placeholder="Live Search...", aria-label="Search">
+           <a href="{% url 'ai_ml' %}" style="width: 40px;" class="btn btn-secondary btn-sm">
+               <i class="fas fa-sync-alt"></i>
+           </a>
+       </div>
+   </div>
+
+   <table class="table table-ordered" id="ai_ml" style="text-align:center;">
+       <thead class="table-success">
+           <tr>
+               <th>ID</th>
+               <th>Name</th>
+               <th>Language</th>
+               <th>Developer</th>
+               <th>Edit</th>
+               <th>Delete</th>
+           </tr>
+       </thead>
+       <tbody>
+           {% for ai_ml in ai_ml_list %}
+              <tr>
+               <td>{{ai_ml.id}}</td>
+               <td>{{ai_ml.name}}</td>
+               <td>{{ai_ml.language}}</td>
+               <td>{{ai_ml.developer}}</td>
+               <td> 
+                <a class="btn btn-success text-center" title="Edit Vendor" data-bs-toggle="modal" data-bs-target="#edit_ai_ml_Modal{{ai_ml.pk}}">
+                     <i class="fas fa-pen"></i>
+                </a>
+           </td>
+           <td>
+                <a class="btn btn-secondary text-center" title="Delete mrm_model" data-bs-toggle="modal" data-bs-target="#deleteaimlModal{{ai_ml.pk}}">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+           </td>
+              </tr>
+              {% include 'edit_ai_ml.html' %}
+              {% include 'delete_ai_ml.html' %}
+           {% endfor %}
+       </tbody>
+       
+   </table>
+   {% include 'add_ai_ml.html' %}
+   <br><br><br>
+</div>  
+{% endblock content%}
+

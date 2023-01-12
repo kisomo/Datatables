@@ -1,0 +1,24 @@
+
+<!-- Delete Confirmation -->
+<div class="modal fade" id="deletemrmmodelModal{{mrm_model.pk}}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="deleteModalLabel"><i class="fas fa-trash-alt">&nbsp;&nbsp; Delete MRM Model</i></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="text-center text-danger"><i class="far fa-times-circle fa-5x mb-4 mt-2"></i>
+                <div class="text-center text-danger">
+                    <span> DO YOU WANT TO DELETE THIS MRM MODEL?</span>
+                    <div class="text-dark mt-3 mb-2">MRM Model:<strong>{{mrm_model.name}}</strong></div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+            <a href="delete_mrm_model/{{ mrm_model.pk}}" class="btn btn-danger btn-sm">Delete</a>
+        </div>
+    </div>
+    </div>
+

@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br><br><br>
+<style>
+    .top-layer{
+        display: flex;
+        flex-direction: row;
+        gap: 10px 20px; /* row-gap column gap */
+    }
+    .top-layer1{
+        border:double;
+    }
+    .top-layer2{
+        border:double;
+    }
+    .top-layer3{
+        border:double;
+    }
+
+    .bottom-layer{
+        display:grid;
+        gap: 10px 20px; /* row-gap column gap */
+    }
+    .bottom-layer1{
+        border:double;
+    }
+    .bottom-layer2{
+        border:double;
+    }
+    .bottom-layer3{
+        border:double;
+    }
+</style>
+
+<!-- <div class="container"> -->
+    <div class="top-layer">
+        <div class="top-layer1">
+            In this example you will be able to see that the $() method is used to get all cell nodes in the table's body and then act on them (in this case adding a click event). The action here is to apply a filter to the table with the value of what is in each cell.
+
+It is also worth noting that this same effect could be achieved by attaching a delegated click event after the table has been initialised - but the example shows the use of the API inside the callbacks!
+        </div>
+        <div class="top-layer2">
+            In this example you will be able to see that the $() method is used to get all cell nodes in the table's body and then act on them (in this case adding a click event). The action here is to apply a filter to the table with the value of what is in each cell.
+
+            It is also worth noting that this same effect could be achieved by attaching a delegated click event after the table has been initialised - but the example shows the use of the API inside the callbacks!
+        </div>
+        <div class="top-layer3">
+            In this example you will be able to see that the $() method is used to get all cell nodes in the table's body and then act on them (in this case adding a click event). The action here is to apply a filter to the table with the value of what is in each cell.
+
+            It is also worth noting that this same effect could be achieved by attaching a delegated click event after the table has been initialised - but the example shows the use of the API inside the callbacks!
+        </div>
+    </div>
+    <div class="bottom-layer">
+        <div class="bottom-layer1">
+            In this example you will be able to see that the $() method is used to get all cell nodes in the table's body and then act on them (in this case adding a click event). The action here is to apply a filter to the table with the value of what is in each cell.
+
+            It is also worth noting that this same effect could be achieved by attaching a delegated click event after the table has been initialised - but the example shows the use of the API inside the callbacks!
+        </div>
+        <div class="bottom-layer2">
+            In this example you will be able to see that the $() method is used to get all cell nodes in the table's body and then act on them (in this case adding a click event). The action here is to apply a filter to the table with the value of what is in each cell.
+
+            It is also worth noting that this same effect could be achieved by attaching a delegated click event after the table has been initialised - but the example shows the use of the API inside the callbacks!
+        </div>
+        <div class="bottom-layer3">
+            In this example you will be able to see that the $() method is used to get all cell nodes in the table's body and then act on them (in this case adding a click event). The action here is to apply a filter to the table with the value of what is in each cell.
+
+            It is also worth noting that this same effect could be achieved by attaching a delegated click event after the table has been initialised - but the example shows the use of the API inside the callbacks!
+        </div>
+        
+        <br><br><br>
+        <div class="mrm_models-list">
+             <!-- Input Search Outside-->
+            <div class="d-flex" style="margin-right:25px;">
+                <div class="input-group input-group-sm">
+                    <a class="btn btn-success btn-sm" style="width: 40px;" data-bs-toggle="modal" data-bs-target="#addmrmmodelModal">
+                        <i class="fas fa-plus"></i>
+                    </a>
+                    <input class="form-control" type="search" id="search" placeholder="Live Search...", aria-label="Search">
+                    <a href="{% url 'mrm_models' %}" style="width: 40px;" class="btn btn-secondary btn-sm">
+                        <i class="fas fa-sync-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+            <table class="table table-ordered" id="mrm_models" style="text-align:center;">
+                <thead class="table-success">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Rating</th>
+                        <th>LOB</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for mrm_model in mrm_models %}
+                       <tr>
+                        <td>{{mrm_model.id}}</td>
+                        <td>{{mrm_model.name}}</td>
+                        <td>{{mrm_model.rating}}</td>
+                        <td>{{mrm_model.lob}}</td>
+                        <td> 
+                            <a class="btn btn-success text-center" title="Edit Vendor" data-bs-toggle="modal" data-bs-target="#editmrmmodelModal{{mrm_model.pk}}">
+                                 <i class="fas fa-pen"></i>
+                            </a>
+                       </td>
+                       <td>
+                            <a class="btn btn-secondary text-center" title="Delete mrm_model" data-bs-toggle="modal" data-bs-target="#deletemrmmodelModal{{mrm_model.pk}}">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                       </td>
+                       </tr>
+                       {% include 'edit_mrm_model.html' %}
+                       {% include 'delete_mrm_model.html' %}
+                    {% endfor %}
+                   
+                </tbody>
+            </table>
+            {% include 'add_mrm_model.html' %}
+         <br><br><br>
+        </div>
+
+    </div>
+
+<!-- </div> -->
+{% endblock content %}

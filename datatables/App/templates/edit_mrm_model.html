@@ -1,0 +1,24 @@
+{% extends 'add_mrm_model.html' %}
+
+
+{% block modal-id %}id="editmrmmodelModal{{mrm_model.pk}}"{% endblock modal-id %}
+
+{% block modal-title %}<i class="fas fa-edit"></i>&nbsp;&nbsp; Edit MRM Model {% endblock modal-title %}
+
+{% block action %} action="/edit_mrm_model" {% endblock action %}
+
+{% block value-id %}
+    <div class="input-group mb-3">
+        <span class="btn order-secondary bg-light side-label"><i class="fas fa-key"></i></span>
+        <input type="text" class="form-control" name="id" value="{{mrm_model.id}}" readonly>
+    </div>
+{% endblock value-id %}
+                 
+{% block value-name %}{{mrm_model.name}}{% endblock value-name %}
+
+{% block value-rating %}{{mrm_model.rating}}{% endblock value-rating %}
+
+{% block value-lob %}{{mrm_model.lob}}{% endblock value-lob %} 
+            
+{% block btn-action %}<i class="fas fa-edit"></i>&nbsp;&nbsp;Save Changes {% endblock btn-action %}
+ 

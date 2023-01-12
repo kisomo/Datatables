@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+<!-- Navbar Content -->
+{% block navbar-content %}
+{% endblock navbar-content %}
+
+{% block content %}  
+<div class="container">
+    <br><br><br>
+    <!-- Input Search Outside-->
+    <div class="d-flex" style="margin-right:25px;">
+        <div class="input-group input-group-sm">
+            <a class="btn btn-success btn-sm" style="width: 40px;" data-bs-toggle="modal" data-bs-target="#addvendorModal">
+                <i class="fas fa-plus"></i>
+            </a>
+            <input class="form-control" type="search" id="search" placeholder="Live Search...", aria-label="Search">
+            <a href="{% url 'vendors' %}" style="width: 40px;" class="btn btn-secondary btn-sm">
+                <i class="fas fa-sync-alt"></i>
+            </a>
+        </div>
+    </div>
+
+    <table class="table table-ordered" id="vendors" style="text-align:center;">
+        <thead class="table-success">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Industry</th>
+               <!--  <th>School</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Town</th>
+                <th>Zipcode</th>
+                <th>Phone</th>
+                <th>Tenor</th>
+                <th>Revenue</th>
+                <th>Assets</th> -->
+                <th>Edit Vendor</th>
+                <th>Delete Vendor</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vendor in vendors %}
+               <tr>
+                <td>{{vendor.id}}</td>
+                <td>{{vendor.name}}</td>
+                <td>{{vendor.email}}</td>
+                <td>{{vendor.industry}}</td>
+               <!--  <td>{{vendor.school}}</td>
+                <td>{{vendor.address}}</td>
+                <td>{{vendor.City}}</td>
+                <td>{{vendor.town}}</td>
+                <td>{{vendor.zipcode}}</td>
+                <td>{{vendor.phone}}</td>
+                <td>{{vendor.tenor}}</td>
+                <td>{{vendor.revenue}}</td>
+                <td>{{vendor.assets}}</td> -->
+                <td> 
+                    <a class="btn btn-success text-center" title="Edit Vendor" data-bs-toggle="modal" data-bs-target="#editvendorModal{{vendor.pk}}">
+                         <i class="fas fa-pen"></i>
+                    </a>
+               </td>
+               <td>
+                    <a class="btn btn-secondary text-center" title="Delete Vendor" data-bs-toggle="modal" data-bs-target="#deletevendorModal{{vendor.pk}}">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+               </td>
+               </tr>
+               {% include 'edit_vendor.html' %}
+               {% include 'delete_vendor.html' %}
+            {% endfor %}
+           
+        </tbody>
+        
+    </table>
+    {% include 'add_vendor.html' %}
+    
+
+</div>
+<!-- DataTables script for vendors -->
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

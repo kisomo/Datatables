@@ -1,0 +1,28 @@
+{% extends 'add_ai_ml.html' %}
+
+
+
+{% block modal-id %}id="edit_ai_ml_Modal{{ai_ml.pk}}"{% endblock modal-id %} 
+
+{% block modal-title %}<i class="fas fa-edit"></i>&nbsp;&nbsp; Edit AI ML model {% endblock modal-title %}
+
+{% block action %} action="/edit_ai_ml" {% endblock action %}
+
+{% block value-id %}
+    <div class="input-group mb-3">
+        <span class="btn order-secondary bg-light side-label"><i class="fas fa-key"></i></span>
+        <input type="text" class="form-control" name="id" value="{{ai_ml.id}}" readonly>
+    </div>
+{% endblock value-id %}
+                 
+{% block value-name %}{{ai_ml.name}}{% endblock value-name %}
+                
+{% block value-language %}{{ai_ml.language}}{% endblock value-language %}
+                
+{% block value-developer %}{{ai_ml.developer}}{% endblock value-developer %} 
+                    
+{% block btn-action %}<i class="fas fa-edit"></i>&nbsp;&nbsp;Save Changes {% endblock btn-action %}
+
+
+
+
